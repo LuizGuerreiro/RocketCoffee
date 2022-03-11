@@ -24,90 +24,256 @@ body {
    text-align: center;
 }
 
-.blur1 {
-   position: absolute;
-   top: 0;
-   right: 0;
+@media screen and (max-width: 915px) {
+   .blur1, .blur2, .logo .desktop {
+      display: none;
+   }
+
+   .blur3 {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100vw;
+   }
+
+   header {
+      height: 50vh;
+      display: grid;
+      grid-template-areas: "logo menu"
+                           "p p"
+                           "button button";
+      justify-items: center;
+      align-content: stretch;
+   }
+
+   .logo {
+      align-self: center;
+      grid-area: logo;
+   }
+
+   nav {
+      align-self: center;
+      grid-area: menu;
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: center;
+      align-items: center;
+      gap: 5%;
+   }
+
+   nav .modal {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: -100;
+   }
+
+   nav .modal.active {
+      opacity: 1;
+      visibility: visible;
+      width: 100vw;
+      height: 85vh;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: var(--backgrond);
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: start;
+      justify-content: start;
+      align-content: start;
+      align-items: center;
+      text-align: left;
+   }
+
+   nav .menu,
+   nav .close {
+      opacity: 0;
+      visibility: hidden;
+      position: absolute;
+      top: -100;
+   }
+
+   nav .menu.active,
+   nav .close.active {
+      opacity: 1;
+      visibility: visible;
+      position: initial;
+   }
+
+   nav a {
+      width: 100%;
+      color: var(--border-menu-mobile);
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 5% 10%;
+      border-top: 1px solid var(--border-menu-mobile);
+   }
+
+   nav a:last-of-type {
+      border-bottom: 1px solid var(--border-menu-mobile);
+   }
+
+   nav a:hover {
+      color: var(--text-color-menu-mobile);
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: 300ms;
+   }
+
+   p {
+      width: 70vw;
+      align-self: center;
+      grid-area: p;
+      font-size: calc(1rem + 2vw);
+   }
+
+   .button {
+      align-self: center;
+      grid-area: button;
+   }
+
+   button {
+      width: 10rem;
+      height: 3rem;
+      border: 1pt solid var(--button);
+      border-radius: 8px;
+      box-sizing: border-box;
+      background: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1rem;
+      color: var(--text-color);
+   }
+
+   button:hover {
+      background-color: var(--button);
+      font-size: 1rem;
+      transition: 300ms;
+   }
+
+   section {
+      height: 50vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      justify-content: center;
+   }
+
+   section img {
+      width: 90%;
+      margin: 0 auto;
+   }
+
+   h1 {
+      font-size: calc(2rem + 3vw);
+      font-weight: bold;
+   }
+
+   h2 {
+      font-size: calc(2rem + 3vw);
+      font-weight: bold;
+      letter-spacing: -3pt;
+      color: var(--backgrond);
+      text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
+   }
 }
 
-.blur2{
-   position: absolute;
-   bottom: 0;
-   left: 0;
-}
+@media (min-width: 916px) {
+   .blur3, nav .menu, .close, .logo .mobile, p {
+      display: none;
+   }
 
-header {
-   height: 20vh;
-   display: grid;
-   grid-template-columns: 1fr 2fr 1fr;
-   align-items: center;
-}
+   .blur1 {
+      position: absolute;
+      top: 0;
+      right: 0;
+   }
+   
+   .blur2{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+   }
 
-.logo {
-   text-align: right;
-}
+   header {
+      position: relative;
+      height: 20vh;
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      gap: 5%;
+      align-items: center;
+   }
+   
+   .logo {
+      text-align: right;
+   }
+   
+   nav .modal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5%;
+   }
+   
+   nav a {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      text-decoration: none;
+   }
+   
+   nav a:hover {
+      color: var(--button);
+      font-size: 1.5rem;
+      font-weight: bold;
+      transition: 300ms;
+   }
+   
+   .button {
+      text-align: left;
+   }
+   
+   button {
+      width: 10rem;
+      height: 3rem;
+      border: 1pt solid var(--button);
+      border-radius: 8px;
+      box-sizing: border-box;
+      background: none;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      font-weight: 800;
+      line-height: 1rem;
+      color: var(--text-color);
+   }
+   
+   button:hover {
+      background-color: var(--button);
+      font-size: 1rem;
+      transition: 300ms;
+   }
 
-nav {
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   gap: 5%;
-}
+   section {
+      height: 80vh;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      justify-content: center;
+   }
 
-nav a {
-   font-size: 1.2rem;
-   color: var(--text-color);
-   text-decoration: none;
-}
+   section img {
+      width: 100%;
+   }
 
-nav a:hover {
-   color: var(--button);
-   font-size: 1.5rem;
-   font-weight: bold;
-   transition: 300ms;
-}
+   h1 {
+      font-size: calc(3rem + 3vw);
+      font-weight: bold;
+   }
 
-.button {
-   text-align: left;
-}
-
-button {
-   position: relative;
-   width: 10vw;
-   height: 5vh;
-   border: 1pt solid var(--button);
-   border-radius: 8px;
-   box-sizing: border-box;
-   background: none;
-   text-transform: uppercase;
-   font-size: 0.9rem;
-   font-weight: 800;
-   line-height: 1rem;
-   color: var(--text-color);
-}
-
-button:hover {
-   background-color: var(--button);
-   font-size: 1rem;
-   transition: 300ms;
-}
-
-section {
-   height: 80vh;
-   display: grid;
-   grid-template-rows: 1fr auto;
-   justify-content: center;
-}
-
-h1 {
-   font-size: 7rem;
-   font-weight: bold;
-}
-
-h2 {
-   font-size: 7rem;
-   font-weight: bold;
-   letter-spacing: -3pt;
-   color: var(--backgrond);
-   text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
+   h2 {
+      font-size: calc(3rem + 3vw);
+      font-weight: bold;
+      letter-spacing: -3pt;
+      color: var(--backgrond);
+      text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
+   }
 }
