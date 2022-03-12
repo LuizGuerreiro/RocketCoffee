@@ -2,7 +2,7 @@
   "name": "rocketcoffee",
   "version": "1.0.0",
   "description": "Desafio do curso Discover da Rocketseat",
-  "main": "views/index.html",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
