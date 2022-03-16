@@ -11,21 +11,26 @@
    margin: 0;
    padding: 0;
    border: 0;
+   box-sizing: border-box;
 }
 
 body {
    width: 100vw;
    height: 100vh;
+   position: relative;
    background-color: var(--backgrond);
-   margin: 0 auto;
-   text-align: center;
    font-family: 'Manrope', sans-serif;
    color: var(--text-color);
    text-align: center;
 }
 
 @media screen and (max-width: 915px) {
-   .blur1, .blur2, .logo .desktop {
+   body {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+   }
+
+   .blur1, .blur2, .desktop {
       display: none;
    }
 
@@ -33,26 +38,24 @@ body {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 100vw;
+      width: 100%;
+      z-index: -1;
    }
 
    header {
-      height: 50vh;
       display: grid;
       grid-template-areas: "logo menu"
                            "p p"
                            "button button";
       justify-items: center;
-      align-content: stretch;
+      align-items: center;
    }
 
-   .logo {
-      align-self: center;
+   .mobile {
       grid-area: logo;
    }
 
    nav {
-      align-self: center;
       grid-area: menu;
       display: grid;
       grid-template-columns: 1fr;
@@ -62,15 +65,11 @@ body {
    }
 
    nav .modal {
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      top: -100;
+      display: none;
    }
 
    nav .modal.active {
-      opacity: 1;
-      visibility: visible;
+      display: block;
       width: 100vw;
       height: 85vh;
       position: absolute;
@@ -88,26 +87,21 @@ body {
 
    nav .menu,
    nav .close {
-      opacity: 0;
-      visibility: hidden;
-      position: absolute;
-      top: -100;
+      display: none;
    }
 
    nav .menu.active,
    nav .close.active {
-      opacity: 1;
-      visibility: visible;
-      position: initial;
+      display: block;
    }
 
    nav a {
       width: 100%;
       color: var(--border-menu-mobile);
+      border-top: 1px solid var(--border-menu-mobile);
+      padding: 5% 10%;
       font-size: 1rem;
       text-decoration: none;
-      padding: 5% 10%;
-      border-top: 1px solid var(--border-menu-mobile);
    }
 
    nav a:last-of-type {
@@ -116,8 +110,10 @@ body {
 
    nav a:hover {
       color: var(--text-color-menu-mobile);
+      border-left: solid 5px var(--button);
       font-size: 1.5rem;
       font-weight: bold;
+      text-decoration: none;
       transition: 300ms;
    }
 
@@ -127,37 +123,35 @@ body {
       grid-area: p;
       font-size: calc(1rem + 2vw);
    }
-
-   .button {
-      align-self: center;
+   
+   header button {
       grid-area: button;
-   }
-
-   button {
       width: 10rem;
       height: 3rem;
       border: 1pt solid var(--button);
       border-radius: 8px;
-      box-sizing: border-box;
       background: none;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 800;
       line-height: 1rem;
       color: var(--text-color);
    }
 
-   button:hover {
+   header button:hover {
       background-color: var(--button);
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: 300ms;
    }
 
    section {
-      height: 50vh;
       display: grid;
       grid-template-rows: 1fr auto;
       justify-content: center;
+   }
+
+   section .image {
+      display: flex;
    }
 
    section img {
@@ -180,7 +174,12 @@ body {
 }
 
 @media (min-width: 916px) {
-   .blur3, nav .menu, .close, .logo .mobile, p {
+   body {
+      display: grid;
+      grid-template-rows: 1fr 4fr;
+   }
+
+   .blur3, nav .menu, .close, .mobile, p {
       display: none;
    }
 
@@ -188,25 +187,25 @@ body {
       position: absolute;
       top: 0;
       right: 0;
+      z-index: -1;
    }
    
    .blur2{
       position: absolute;
       bottom: 0;
       left: 0;
+      z-index: -1;
    }
 
    header {
-      position: relative;
-      height: 20vh;
       display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 3fr 1fr;
       gap: 5%;
       align-items: center;
    }
-   
-   .logo {
-      text-align: right;
+
+   header .desktop {
+      justify-self: end;
    }
    
    nav .modal {
@@ -226,38 +225,38 @@ body {
       color: var(--button);
       font-size: 1.5rem;
       font-weight: bold;
+      text-decoration: none;
       transition: 300ms;
    }
    
-   .button {
-      text-align: left;
-   }
-   
-   button {
+   header button {
       width: 10rem;
       height: 3rem;
       border: 1pt solid var(--button);
       border-radius: 8px;
-      box-sizing: border-box;
       background: none;
       text-transform: uppercase;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 800;
       line-height: 1rem;
       color: var(--text-color);
+      cursor: pointer;
    }
    
-   button:hover {
+   header button:hover {
       background-color: var(--button);
-      font-size: 1rem;
+      font-size: 0.9rem;
       transition: 300ms;
    }
 
    section {
-      height: 80vh;
       display: grid;
       grid-template-rows: 1fr auto;
       justify-content: center;
+   }
+
+   section .image {
+      display: flex;
    }
 
    section img {
