@@ -77,10 +77,10 @@ body {
    nav .modal.active {
       display: block;
       width: 100vw;
-      height: 85%;
+      height: 85vh;
       position: absolute;
       left: 0;
-      top: 100px;
+      top: 15vh;
       background-color: var(--backgrond);
       display: grid;
       grid-template-columns: 1fr;
